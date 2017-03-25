@@ -53,7 +53,7 @@ dist/*
 dist
 
 # private settingfile
-./src/define/mySetting.ts
+*setting.ts
 
 # etc
 *sample*
