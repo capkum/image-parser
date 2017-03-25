@@ -65,7 +65,7 @@ export class Parser extends Setting {
           writeStream.close();
           setTimeout(() => {
             this.saveParsingData(savePath, $);
-          });
+          }, 10000);
         });
 
     });
