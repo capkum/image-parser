@@ -19,6 +19,8 @@ coverage
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
+.tscache/*
+./src/.baseDir.ts
 
 # node-waf configuration
 .lock-wscript
@@ -35,3 +37,24 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# vscode
+.vscode/*
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# donwload image folder
+img
+
+# ts compile folder
+dist/*
+dist
+
+# private settingfile
+./src/define/mySetting.ts
+
+# etc
+*sample*
+*sample/*

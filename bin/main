@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+"use strict";
+
+/**
+ * settgin.js 파일 수정
+ */
+const parser = require('../dist/parser');
+const settings = require('../dist/define/setting');
+const Q = require('q');
+
+// parser
+const urlList = new settings.Setting().uriList();
+const parsing = new parser.Parser();
+
+urlList.then((list) => {
+
+  let asyncWork = function (i) {
+    var deferred = Q.defer();
+
+    setTimeout(function () {
+      deferred.resolve(
+        parsing.scrapy(i)
+      );
+    }, 10000);
+
+    return deferred.promise;
+  };
+
+  let next = (idx) => {
+    if (idx > list.length - 1)  return Q(true);
+
+    return asyncWork(list[idx]).then((result) => next(idx + 1));
+  };
+
+  next(0).then(() => {
+    console.log('All completed');
+  });
+
+});
